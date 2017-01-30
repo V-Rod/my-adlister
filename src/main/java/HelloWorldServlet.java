@@ -6,7 +6,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-@WebServlet(name = "HelloWorldServlet", urlPatterns = {"/hello"}) //urlPatterns is a set of paths
+@WebServlet(name = "HelloWorldServlet", urlPatterns = {""}) //urlPatterns is a set of paths
 public class HelloWorldServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html"); // This is the header of the HTTP message telling the browser of the client
@@ -19,6 +19,10 @@ public class HelloWorldServlet extends HttpServlet {
         } else {
             writer.println("<h1>Hello World!</h1>");
         }
+
+
+
+
     }
 }
 
