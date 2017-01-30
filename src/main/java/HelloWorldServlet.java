@@ -8,9 +8,10 @@ import java.io.PrintWriter;
 
 @WebServlet(name = "HelloWorldServlet", urlPatterns = {""}) //urlPatterns is a set of paths
 public class HelloWorldServlet extends HttpServlet {
+    private int counter = 0;
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html"); // This is the header of the HTTP message telling the browser of the client
-                                        // the content type its sending...in this case its a web page
+                                             // the content type its sending...in this case its a web page
 
         String name = request.getParameter("name");
         PrintWriter writer = response.getWriter();
@@ -20,9 +21,8 @@ public class HelloWorldServlet extends HttpServlet {
             writer.println("<h1>Hello World!</h1>");
         }
 
-
-
-
+        counter +=1;
+        response.getWriter().println("<h1>The count is " + counter + "</h1>");
     }
 }
 
