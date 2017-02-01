@@ -4,9 +4,9 @@ public class Ad {
     private String title;
     private String description;
 
-    public Ad(long id, long userId, String title, String description) {
+    public Ad(long id, String title, String description) {
         this.id = id;
-        this.userId = userId;
+        this.userId = 0;
         this.title = title;
         this.description = description;
     }
