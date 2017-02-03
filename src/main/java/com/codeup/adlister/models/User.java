@@ -6,10 +6,13 @@ public class User {
     private String email;
     private String password;
 
-    public User() {}
+public User (long id, String username, String email, String password) {
+    this(username, email, password);
+    this.id = id;
+}
 
-    public User(long id, String username, String email, String password) {
-        this.id = id;
+    public User(String username, String email, String password) {
+        this.id = 0;
         this.username = username;
         this.email = email;
         this.password = password;
