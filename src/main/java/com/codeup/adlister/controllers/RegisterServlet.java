@@ -17,6 +17,7 @@ public class RegisterServlet extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        // input -> request.getParameter
         String username = request.getParameter("username");
         String email = request.getParameter("email");
         String password = request.getParameter("password");
@@ -26,16 +27,27 @@ public class RegisterServlet extends HttpServlet {
         boolean inputHasErrors = username.isEmpty()
             || email.isEmpty()
             || password.isEmpty()
-            || (! password.equals(passwordConfirmation));
+            || (!password.equals(passwordConfirmation));
 
         if (inputHasErrors) {
             response.sendRedirect("/register");
             return;
         }
 
+        // process -> saving/updating/selecting/deleting from a database
         // create and save a new user
         User user = new User(username, email, password);
         DaoFactory.getUsersDao().insert(user);
+
+        // Output
+        // request.getrRequestDispatcher().forward()
         response.sendRedirect("/login");
     }
 }
+
+
+
+// input
+// validation
+// process
+//output  This is what I need to be looking for in a servlet for the doPost
