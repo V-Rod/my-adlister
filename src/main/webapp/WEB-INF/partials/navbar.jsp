@@ -6,14 +6,30 @@
             <a class="navbar-brand" href="/ads">Adlister</a>
         </div>
         <ul class="nav navbar-nav navbar-right">
-            <c:choose>
-                <c:when test='${sessionScope.containsKey("user")}'>
-                    <li><a href="/logout">Logout</a></li>
-                </c:when>
-                <c:otherwise>
-                    <li><a href="/login">Login</a></li>
-                </c:otherwise>
-            </c:choose>
+            <li>
+                <form action="/ads" class="navbar-form" role="search">
+                    <div class="input-group">
+                        <input type="text" size="30" class="form-control"
+                               placeholder="Search by title or description" name="q">
+                        <div class="input-group-btn">
+                            <button class="btn btn-default" type="submit">
+                                <i class="glyphicon glyphicon-search"></i>
+                            </button>
+                        </div>
+
+                    </div>
+                </form>
+            </li>
+
+            <c:if test="${sessionScope.user == null}">
+                <li><a href="/register">Register</a></li>
+                <li><a href="/login">Login</a></li>
+            </c:if>
+            <c:if test="${sessionScope.user != null}">
+                <li><a href="/ads/create">Create Ad</a></li>
+                <li><a href="/profile">Profile</a></li>
+                <li><a href="/logout">Logout</a></li>
+            </c:if>
         </ul>
     </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
